@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="countdown.css">
+</head>
+<body>
+    
+		
+		
+	
+		
+		<h1>Countdown Clock</h1>
+		<div id="clockdiv">
+			<div>
+			
+				
+				<span class="days" id="day"></span>
+				<div class="smalltext">Days</div>
+			</div>
+			<div>
+			
+				
+				<span class="hours" id="hour"></span>
+				<div class="smalltext">Hours</div>
+			</div>
+			<div>
+			
+				
+				<span class="minutes" id="minute"></span>
+				<div class="smalltext">Minutes</div>
+			</div>
+			<div>
+			
+				
+				<span class="seconds" id="second"></span>
+				<div class="smalltext">Seconds</div>
+			</div>
+		</div>
+		<p id="demo"></p>
+	
+		<script>
+		
+			
+			let deadline = new Date(
+				"nov 15, 2023 08:05:00"
+			).getTime();
+
+			
+			let x = setInterval(function () {
+
+				
+				let now = new Date().getTime();
+
+				let t = deadline - now;
+
+				
+				let days = Math.floor(
+					t / (1000 * 60 * 60 * 24)
+				);
+				let hours = Math.floor(
+					(t % (1000 * 60 * 60 * 24)) /
+						(1000 * 60 * 60)
+				);
+				let minutes = Math.floor(
+					(t % (1000 * 60 * 60)) / (1000 * 60)
+				);
+				let seconds = Math.floor(
+					(t % (1000 * 60)) / 1000
+				);
+
+				
+				document.getElementById("day")
+						.innerHTML = days;
+				document.getElementById("hour")
+						.innerHTML = hours;
+				document.getElementById("minute")
+						.innerHTML = minutes;
+				document.getElementById("second")
+						.innerHTML = seconds;
+
+			
+				if (t < 0) {
+					clearInterval(x);
+					document.getElementById(
+						"demo"
+					).innerHTML = "TIME UP";
+					document.getElementById(
+						"day"
+					).innerHTML = "0";
+					document.getElementById(
+						"hour"
+					).innerHTML = "0";
+					document.getElementById(
+						"minute"
+					).innerHTML = "0";
+					document.getElementById(
+						"second"
+					).innerHTML = "0";
+				}
+			}, 1000);
+		</script>
+	</body>
+</html>
+
